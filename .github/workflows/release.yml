@@ -32,3 +32,6 @@ jobs:
           title: '[ci] Release ${{ github.ref_name }}'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Use test
+        uses: ./github/workflows/test.yml
