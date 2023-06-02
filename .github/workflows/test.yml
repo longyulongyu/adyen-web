@@ -2,14 +2,10 @@ name: Validate remote assets
 
 on:
   pull_request:
-    branches:
-      - test
   workflow_dispatch:
 
 jobs:
-  check-secured-fields-assets:
-    if: contains(github.head_ref, 'changeset-release')
-
+  Display:
     runs-on: ubuntu-latest
 
     steps:
