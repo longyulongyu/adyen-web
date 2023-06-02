@@ -3,14 +3,12 @@ name: Release
 on:
   push:
     branches:
-      - main
+      - test
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 jobs:
   release:
-    # Prevents changesets action from creating a PR on forks
-    if: github.repository == 'adyen/adyen-web'
     name: Release
     runs-on: ubuntu-latest
     steps:
