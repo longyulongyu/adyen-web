@@ -1,11 +1,11 @@
 {
   "$schema": "https://unpkg.com/@changesets/config@2.3.0/schema.json",
-  "changelog": ["./changelog-config.js", {"repo": "adyen/adyen-web"}],
+  "changelog": ["./changelog-config.js", {"repo": "longyulongyu/adyen-web"}],
   "commit": false,
   "fixed": [],
   "linked": [],
   "access": "public",
-  "baseBranch": "main",
+  "baseBranch": "master",
   "updateInternalDependencies": "patch",
   "ignore": ["@adyen/adyen-web-e2e","@adyen/adyen-web-playwright","@adyen/adyen-web-playground","@adyen/adyen-web-server"]
 }
