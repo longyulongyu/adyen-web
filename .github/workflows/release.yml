@@ -23,6 +23,12 @@ jobs:
       - name: Install Dependencies
         run: yarn
 
+      - uses: tibdex/github-app-token@v1
+        id: generate-token
+        with:
+          app_id: ${{ secrets.TEST_APP_ID }}
+          private_key: ${{ secrets.TEST_APP_PRIVATE_KEY }}
+
       - name: Create Release Pull Request
         uses: changesets/action@v1
         with:
@@ -30,9 +36,4 @@ jobs:
           commit: '[ci] release ${{ github.ref_name }}'
           title: '[ci] Release ${{ github.ref_name }}'
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Invoke workflow without inputs
-        uses: benc-uk/workflow-dispatch@v1
-        with:
-          workflow: test.yml
+          GITHUB_TOKEN: ${{ steps.generate-token.outputs.token }}
