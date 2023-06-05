@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - test
-  workflow_dispatch:
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
@@ -24,6 +23,12 @@ jobs:
       - name: Install Dependencies
         run: yarn
 
+      - uses: getsentry/action-github-app-token@v2
+        id: generate-token
+        with:
+          app_id: ${{ secrets.TEST_APP_ID }}
+          private_key: ${{ secrets.TEST_APP_PRIVATE_KEY }}
+
       - name: Create Release Pull Request
         uses: changesets/action@v1
         with:
@@ -31,4 +36,4 @@ jobs:
           commit: '[ci] release ${{ github.ref_name }}'
           title: '[ci] Release ${{ github.ref_name }}'
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ steps.generate-token.outputs.token }}
