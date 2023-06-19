@@ -1,7 +1,6 @@
 name: Release
 
 on:
-  workflow_dispatch:
   push:
     branches:
       - test
@@ -41,5 +40,8 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               workflow_id: 'test.yml',
-              ref: 'master',
+              ref: 'test',
+              inputs: {
+                issue-number: context.issue.number
+            },
             })

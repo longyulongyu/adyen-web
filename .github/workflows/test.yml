@@ -1,6 +1,11 @@
 name: Validate remote assets
 
-on: [pull_request, workflow_dispatch]
+on:
+  workflow_dispatch:
+    inputs:
+      issue-number:
+        description: test issue number
+        required: true
 
 jobs:
   check-secured-fields-assets:
@@ -22,5 +27,6 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            const { issue: { number: issue_number }, repo: { owner, repo }  } = context;
+            const issue_number = ${{ github.event.inputs.issue-number }}
+            const { repo: { owner, repo }  } = context;
             await github.rest.issues.createComment({ issue_number, owner, repo, body: '✅ Test commit!' });
