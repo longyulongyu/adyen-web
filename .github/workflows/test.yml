@@ -4,12 +4,11 @@ on:
   workflow_dispatch:
     inputs:
       issue_number:
-        description: test issue number
+        description: Pull request number
         required: true
 
 jobs:
   check-secured-fields-assets:
-    if: contains(github.head_ref, 'changeset-release')
 
     runs-on: ubuntu-latest
 
