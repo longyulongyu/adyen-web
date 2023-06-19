@@ -34,7 +34,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Get result
-        run: echo "${{steps.create_pr.outputs}}"
+        run: echo "${{steps.create_pr.outputs.pullRequestNumber}}"
 
       - name: Trigger Workflow
         uses: actions/github-script@v6
