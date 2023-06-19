@@ -46,6 +46,6 @@ jobs:
               workflow_id: 'test.yml',
               ref: 'test',
               inputs: {
-                issue_number: ${{steps.create_pr.outputs.pullRequestNumber}}
+                issue_number: `${{steps.create_pr.outputs.pullRequestNumber}}`
               }
             })
