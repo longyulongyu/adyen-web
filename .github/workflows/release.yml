@@ -41,5 +41,7 @@ jobs:
               repo: context.repo.repo,
               workflow_id: 'test.yml',
               ref: 'test',
-              issue_number: context.issue.number
+              inputs: {
+                issue_number: context.issue.number
+              }
             })
