@@ -49,3 +49,6 @@ jobs:
                 issue_number: `${{steps.create_pr.outputs.pullRequestNumber}}`
               }
             })
+
+  call-demo:
+    uses: ./.github/workflows/demo.yml
