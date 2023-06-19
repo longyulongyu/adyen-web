@@ -36,6 +36,7 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
+            console.log(context);
             github.rest.actions.createWorkflowDispatch({
               owner: context.repo.owner,
               repo: context.repo.repo,
